@@ -1,8 +1,7 @@
 pulimento/hugo-firebase
 ==============
-Docker base image for static sites generated with Hugo, with Firebase-CLI
 
-`pulimento/hugo-firebase` is a [Docker](https://www.docker.io) base image for static sites generated with [Hugo](http://gohugo.io).
+`pulimento/hugo-firebase` is a [Docker](https://www.docker.io) base image for static sites generated with [Hugo](http://gohugo.io), with [Firebase](https://firebase.google.com/docs/cli) tools installed.
 
 This work is based on [publysher's](https://github.com/publysher/docker-hugo) image.
 
