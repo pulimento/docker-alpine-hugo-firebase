@@ -12,7 +12,7 @@ RUN update-alternatives --install /usr/bin/node node /usr/bin/nodejs 10
 RUN npm install -g firebase-tools
 
 # Download and install hugo
-ENV HUGO_VERSION 0.17
+ENV HUGO_VERSION 0.25.1
 ENV HUGO_BINARY hugo_${HUGO_VERSION}-64bit.deb
 
 ADD https://github.com/spf13/hugo/releases/download/v${HUGO_VERSION}/${HUGO_BINARY} /tmp/hugo.deb
