@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:17.04
 MAINTAINER pulimento@gmail.com
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -18,9 +18,6 @@ ENV HUGO_BINARY hugo_${HUGO_VERSION}_Linux-64bit.deb
 ADD https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/${HUGO_BINARY} /tmp/hugo.deb
 RUN dpkg -i /tmp/hugo.deb \
 	&& rm /tmp/hugo.deb
-	
-# Make sure that we had the correct version of Hugo installed
-RUN hugo version
 
 # Create working directory
 RUN mkdir /usr/share/blog
