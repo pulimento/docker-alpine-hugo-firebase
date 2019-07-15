@@ -6,11 +6,11 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get -q update
 
 # Add NodeJS PPA
-RUN apt-get install -y curl
+RUN apt-get install -y curl ca-certificates
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 
 # Install packages
-RUN apt-get install -y nodejs npm python-pygments git ca-certificates && rm -rf /var/lib/apt/lists/*
+RUN apt-get install -y nodejs python-pygments git && rm -rf /var/lib/apt/lists/*
 
 #RUN ln -s /usr/bin/nodejs /usr/bin/node
 RUN update-alternatives --install /usr/bin/node node /usr/bin/nodejs 10
