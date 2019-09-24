@@ -13,7 +13,7 @@ RUN npm install -g firebase-tools
 # Download and install hugo
 ADD https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/${HUGO_BINARY}.tar.gz /tmp/hugo.tar.gz
 RUN mkdir /usr/local/hugo \
-	&& tar xzf /usr/local/hugo/${HUGO_BINARY}.tar.gz -C /usr/local/hugo/ \
+	&& tar xzf /tmp/hugo.tar.gz -C /usr/local/hugo/ \
 	&& ln -s /usr/local/hugo/hugo /usr/local/bin/hugo \
-	&& rm /usr/local/hugo/${HUGO_BINARY}.tar.gz
+	&& rm /tmp/hugo.tar.gz
 
