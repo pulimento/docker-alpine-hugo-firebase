@@ -4,9 +4,6 @@ MAINTAINER Javi Pulido <pulimento@gmail.com>
 ENV HUGO_VERSION 0.58.3
 ENV HUGO_BINARY hugo_${HUGO_VERSION}_linux-64bit
 
-# optional?
-#RUN apk update && apk add bash python-pygments && rm -rf /var/cache/apk/*
-
 # Install Firebase tools
 RUN npm install -g firebase-tools
 
@@ -16,4 +13,3 @@ RUN mkdir /usr/local/hugo \
 	&& tar xzf /tmp/hugo.tar.gz -C /usr/local/hugo/ \
 	&& ln -s /usr/local/hugo/hugo /usr/local/bin/hugo \
 	&& rm /tmp/hugo.tar.gz
-
