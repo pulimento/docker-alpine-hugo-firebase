@@ -1,6 +1,8 @@
 pulimento/hugo-firebase
 ==============
 
+[![Build Status](https://img.shields.io/docker/cloud/build/pulimento/hugo-firebase?style=flat-square)](https://hub.docker.com/r/pulimento/hugo-firebase)
+
 `pulimento/hugo-firebase` is a [Docker](https://www.docker.io) base image for static sites generated with [Hugo](http://gohugo.io), with [Firebase](https://firebase.google.com/docs/cli) tools installed.
 
 This work is based on [publysher's](https://github.com/publysher/docker-hugo) image.
