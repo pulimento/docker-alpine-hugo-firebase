@@ -1,41 +1,19 @@
-FROM ubuntu:latest
-MAINTAINER pulimento@gmail.com
+FROM mhart/alpine-node:12
+MAINTAINER Javi Pulido <pulimento@gmail.com>
 
-ENV DEBIAN_FRONTEND noninteractive
+ENV HUGO_VERSION 0.58.3
+ENV HUGO_BINARY hugo_${HUGO_VERSION}_linux-64bit
 
-RUN apt-get -q update
+# optional?
+#RUN apk update && apk add bash python-pygments && rm -rf /var/cache/apk/*
 
-# Add NodeJS PPA
-RUN apt-get install -y curl ca-certificates
-RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
-
-# Install packages
-RUN apt-get install -y nodejs python-pygments git && rm -rf /var/lib/apt/lists/*
-
-#RUN ln -s /usr/bin/nodejs /usr/bin/node
-RUN update-alternatives --install /usr/bin/node node /usr/bin/nodejs 10
-
+# Install Firebase tools
 RUN npm install -g firebase-tools
 
 # Download and install hugo
-ENV HUGO_VERSION 0.56.3
-ENV HUGO_BINARY hugo_${HUGO_VERSION}_Linux-64bit.deb
+ADD https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/${HUGO_BINARY}.tar.gz /tmp/hugo.tar.gz
+RUN mkdir /usr/local/hugo \
+	&& tar xzf /usr/local/hugo/${HUGO_BINARY}.tar.gz -C /usr/local/hugo/ \
+	&& ln -s /usr/local/hugo/hugo /usr/local/bin/hugo \
+	&& rm /usr/local/hugo/${HUGO_BINARY}.tar.gz
 
-ADD https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/${HUGO_BINARY} /tmp/hugo.deb
-RUN dpkg -i /tmp/hugo.deb \
-	&& rm /tmp/hugo.deb
-
-# Create working directory
-#RUN mkdir /usr/share/blog
-#WORKDIR /usr/share/blog
-
-# Expose default hugo port
-#EXPOSE 1313
-
-# Automatically build site
-#ONBUILD ADD site/ /usr/share/blog
-#ONBUILD RUN hugo -d /usr/share/nginx/html/
-
-# By default, serve site
-#ENV HUGO_BASE_URL http://localhost:1313
-#CMD hugo server -b ${HUGO_BASE_URL} --bind=0.0.0.0
