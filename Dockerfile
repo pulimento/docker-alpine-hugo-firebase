@@ -26,15 +26,15 @@ RUN dpkg -i /tmp/hugo.deb \
 	&& rm /tmp/hugo.deb
 
 # Create working directory
-RUN mkdir /usr/share/blog
-WORKDIR /usr/share/blog
+#RUN mkdir /usr/share/blog
+#WORKDIR /usr/share/blog
 
 # Expose default hugo port
-EXPOSE 1313
+#EXPOSE 1313
 
 # Automatically build site
-ONBUILD ADD site/ /usr/share/blog
-ONBUILD RUN hugo -d /usr/share/nginx/html/
+#ONBUILD ADD site/ /usr/share/blog
+#ONBUILD RUN hugo -d /usr/share/nginx/html/
 
 # By default, serve site
 #ENV HUGO_BASE_URL http://localhost:1313
