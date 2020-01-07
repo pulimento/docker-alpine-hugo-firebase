@@ -13,3 +13,6 @@ RUN mkdir /usr/local/hugo \
 	&& tar xzf /tmp/hugo.tar.gz -C /usr/local/hugo/ \
 	&& ln -s /usr/local/hugo/hugo /usr/local/bin/hugo \
 	&& rm /tmp/hugo.tar.gz
+	
+# Trick because hugo is dynamically linked - see https://stackoverflow.com/a/35613430/1096905
+RUN mkdir /lib64 && ln -s /lib/libc.musl-x86_64.so.1 /lib64/ld-linux-x86-64.so.2
