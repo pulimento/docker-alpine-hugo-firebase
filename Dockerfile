@@ -1,7 +1,7 @@
-FROM mhart/alpine-node:12
-MAINTAINER Javi Pulido <pulimento@gmail.com>
+FROM node:lts-alpine
+MAINTAINER Javi Pulido <pulimentoapps@gmail.com>
 
-ENV HUGO_VERSION 0.62.2
+ENV HUGO_VERSION 0.120.4
 ENV HUGO_EXTENDED_BINARY hugo_extended_${HUGO_VERSION}_Linux-64bit
 
 # Install Firebase tools
